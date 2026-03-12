@@ -119,9 +119,36 @@
             font-style: italic;
         }
 
+        .content-split {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin: 30px 0;
+        }
+        
+        .content-split.align-end {
+            align-items: flex-end;
+        }
+
+        .content-split .image-side {
+            flex: 0 0 70%;
+        }
+
+        .content-split .text-side {
+            flex: 0 0 30%;
+        }
+
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+            align-items: end;
+        }
+
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin: 30px 0;
         }
@@ -211,8 +238,23 @@
             }
 
             .figure-grid,
-            .video-grid {
+            .video-grid,
+            .two-col-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .content-split {
+                flex-direction: column;
+            }
+
+            .content-split .image-side {
+                flex: auto;
+                width: 100%;
+            }
+
+            .content-split .text-side {
+                flex: auto;
+                width: 100%;
             }
 
             section {
@@ -281,11 +323,11 @@
 
         <section>
             <h2>Problem Statement and Our Solution</h2>
-            <div style="display: flex; gap: 30px; align-items: center;">
-                <div style="flex: 0 0 70%;">
+            <div class="content-split">
+                <div class="image-side">
                     <img src="figures/CLIO_teaser.png" alt="CLIO Teaser" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                 </div>
-                <div style="flex: 0 0 30%;">
+                <div class="text-side">
                     <p style="font-size: 1em; color: #666; line-height: 1.6;">
                         <strong>Problem Statement</strong>
                         While audio guides provide extensive information, it is often hard for visitors to establish connection between specific exhibit details and the verbal descriptions. 
@@ -316,11 +358,11 @@
         <!-- Figures Section -->
         <section>
             <h2>Experiment Setup</h2>
-            <div style="display: flex; gap: 30px; align-items: end; margin: 30px 0;">
-                <div style="flex: 0 0 70%;">
+            <div class="content-split align-end">
+                <div class="image-side">
                     <img src="figures/experiment_setup.png" alt="Experiment setup for user study evaluation." style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                 </div>
-                <div style="flex: 0 0 30%;">
+                <div class="text-side">
                     <p style="font-size: 1em; color: #666; line-height: 1.6;">
                         <strong>Experiment Setup.</strong> 
                         Given two conditions, Audio-only baseline and CLIO with co-speech actions, we conducted a user study in a mock-up exhibition of historical photographs. 
@@ -340,7 +382,7 @@
                 </strong> 
                 This comparison exemplifies that the participant's gaze at the CLIO condition better aligned with the mentioned exhibits than that at the Audio-only condition.
             </p>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0; align-items: end;">
+            <div class="two-col-grid">
                 <div style="text-align: center;">
                     <img src="figures/eye_tracking_data_clio.png" alt="Eye Tracking with CLIO condition" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <p class="figure-caption" style="margin-top: 15px;">CLIO with co-speech actions</p>
@@ -361,10 +403,8 @@
                 Vertical dashed lines in blue and red respectively mark the start and end of the narration regarding an exhibit.
             </p>
 
-            <div style="display: flex; gap: 30px; align-items: end; margin: 30px 0;">
-                <div style="flex: 0 0 100%;">
-                    <img src="figures/paraller_tracker_orin2_compress.png" alt="Visual comparison of the eye tracking data" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                </div>
+            <div style="margin: 30px 0;">
+                <img src="figures/paraller_tracker_orin2_compress.png" alt="Visual comparison of the eye tracking data" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
             </div>
 
             <p>
@@ -378,11 +418,11 @@
 
         <section>
             <h2>Qualitative Results</h2>
-            <div style="display: flex; gap: 30px; align-items: center; margin: 30px 0;">
-                <div style="flex: 0 0 70%;">
+            <div class="content-split">
+                <div class="image-side">
                     <img src="figures/Combined_CLIO_vs_Audio_Analysis.png" alt="Combined Analysis" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                 </div>
-                <div style="flex: 0 0 30%;">
+                <div class="text-side">
                     <p style="font-size: 1em; color: #666; line-height: 1.6;">
                         <strong>Analysis of the Questionnaire Feedback.</strong>
                         (a) is designed to validate H1 regarding the effectiveness of visual attention guidance. A self-developed questionnaire is used.
@@ -406,10 +446,6 @@
                     <div class="video-wrapper">
                         <!-- Example YouTube embed - replace VIDEO_ID with your actual YouTube video ID -->
                         <iframe src="https://www.youtube.com/embed/svkjpY0vIQM?cc_load_policy=1" allowfullscreen></iframe>
-                        <div class="placeholder" style="padding: 80px 20px;">
-                            <p>YouTube Video</p>
-                            <p style="font-size: 0.85em; margin-top: 10px;">Replace with:<br>&lt;iframe src="https://www.youtube.com/embed/VIDEO_ID"&gt;&lt;/iframe&gt;</p>
-                        </div>
                     </div>
                     <!-- <p class="video-caption">Full tour by CLIO.</p> -->
                 </div>
